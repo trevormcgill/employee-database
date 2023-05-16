@@ -1,6 +1,8 @@
+// Import required modules
 const inquirer = require('inquirer');
 const mysql2 = require('mysql2');
 
+// Establish connection to database
 const db = mysql2.createConnection(
     {
         host: 'localhost',
@@ -11,6 +13,7 @@ const db = mysql2.createConnection(
     console.log(`Connected to the employee_db database.`)
 );
 
+// Array of questions for user input
 const questions = [
     {
         type: 'list',
@@ -32,9 +35,6 @@ const viewEmployees = () => {
             showOptions();
         });
 };
-
-// Implement other functions like viewAllRoles, viewAllDepartments, addDepartment, addRole, addEmployee, updateEmployee
-
 
 const viewRoles = () => {
   const sql = `SELECT role.id, role.title, role.salary, department.name AS department
@@ -73,7 +73,6 @@ const addDepartment = () => {
 };
 
 const addRole = () => {
-  // First get the list of departments to show as choices
   db.promise().query(`SELECT * FROM department`)
       .then(([rows]) => {
           const departments = rows.map(row => ({ name: row.name, value: row.id }));
@@ -107,7 +106,6 @@ const addRole = () => {
 };
 
 const addEmployee = () => {
-  // First get the list of roles and managers to show as choices
   Promise.all([
       db.promise().query(`SELECT * FROM role`),
       db.promise().query(`SELECT id, CONCAT(first_name, ' ', last_name) AS name FROM employee`),
@@ -152,7 +150,6 @@ const addEmployee = () => {
 };
 
 const updateEmployeeRole = () => {
-  // First get the list of employees and roles to show as choices
   Promise.all([
       db.promise().query(`SELECT * FROM role`),
       db.promise().query(`SELECT id, CONCAT(first_name, ' ', last_name) AS name FROM employee`),
@@ -209,7 +206,6 @@ function showOptions() {
       case "Update an Employee Role":
         updateEmployeeRole();
         break;
-      // Add cases for other options
     }
   });
 }
