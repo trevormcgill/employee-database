@@ -13,3 +13,7 @@ The Inquirer module was used to create an interactive interface, offering the us
 [Link to preview video!](https://watch.screencastify.com/v/8e5V2cmLH2GhXRDuMSxQ)
 
 <br>
+
+
+https://github.com/trevormcgill/employee-database/assets/124531579/0c8d96a8-8cc8-4273-ac1f-9e0e875849fd
+
