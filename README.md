@@ -1,1 +1,1 @@
-# employee-database
+# Employee Database
